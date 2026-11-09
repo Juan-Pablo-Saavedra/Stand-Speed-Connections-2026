@@ -43,7 +43,7 @@ Sitio estático (HTML/CSS puro, sin build) con las tarjetas de innovaciones, pat
 | 12 | PATENTE – COMPOSTERAS | NC2021/0017533 | `/t12` |
 | 13 | PATENTE – ALFAJÍAS EN POLIESTIRENO EXPANDIDO | NC2025/0009562 | `/t13` |
 | 14 | PATENTE – PERSONAJES CÓMICS | NC2026/0008668 – NC2026/0008670 | `/t14` |
-| 15 | PATENTE – COMPOSTERAS | NC2019/0014675 | `/t15` |
+| 15 | PATENTE – PIN AND JOIN | NC2019/0014675 | `/t15` |
 | 16 | MARCA – ROBOKIDS | SD2025/0089253 | `/t16` |
 | 17 | PATENTE – MEDIDOR INTELIGENTE | NC2019/0013907 | `/t17` |
 | 18 | MARCA – DE DÁTIL ENERGY | NC2019/0013907 | `/t18` |
@@ -73,7 +73,7 @@ Los QR ya impresos dependen de las rutas `/t01` … `/t24` (o `/t01.html` … `/
 Se dejan tal cual en el sitio; solo se anotan aquí.
 
 - **LARINGOCEL repetido** en t02 y t05 (t05 describe un dispositivo de capacitancia).
-- **COMPOSTERAS repetido** en t12 y t15 (t15 describe fijación ósea).
+- **COMPOSTERAS** aparecía repetido en t12 y t15; t15 se corrigió a PIN AND JOIN (fijación ósea).
 - **Radicado NC2019/0013907 repetido** en t17 y t18.
 - **Radicado SD2025/0089837 repetido** en t19 y t20.
 - **t19 (NIAFLEZ)** tiene la descripción de MEDIDOR INTELIGENTE.
