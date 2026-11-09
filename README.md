@@ -33,12 +33,12 @@ Sitio estático (HTML/CSS puro, sin build) con las tarjetas de innovaciones, pat
 | 02 | PATENTE - LARINGOCEL | NC2022/0010319 | `/t02` |
 | 03 | PATENTE – SOPORTE CON ESTRIBO | NC2020/0012382 | `/t03` |
 | 04 | PATENTE – TIPO MANTA | NC2023/0013042 | `/t04` |
-| 05 | PATENTE - LARINGOCEL | NC2023/0018502 | `/t05` |
+| 05 | PATENTE - DISPOSITIVO PARA MATERIALES DIELÉCTRICOS | NC2023/0018502 | `/t05` |
 | 06 | PATENTE – FORMULA ENFOSCADOS DE PARED | NC2024/0001678 | `/t06` |
 | 07 | PATENTE – MÁQUINA MODULAR PARA CLASIFICACIÓN DE GRANOS DE CAFÉ | NC2024/0009441 | `/t07` |
 | 08 | PATENTE – SISTEMA DE CONTROL DE OLORES | NC2024/0013637 | `/t08` |
 | 09 | PATENTE – ESTUFA ECO-EFICIENTE | NC2017/0008373 | `/t09` |
-| 10 | PATENTE – SISTEMA DE CONTROL DE OLORES | NC2023/0008649 | `/t10` |
+| 10 | PATENTE – TRAMPA PARA CAPTURA DE PLAGAS | NC2023/0008649 | `/t10` |
 | 11 | PATENTE – MÁQUINA DESFIBRADO FINO DE PENCAS | NC2024/0003879 | `/t11` |
 | 12 | PATENTE – COMPOSTERAS | NC2021/0017533 | `/t12` |
 | 13 | PATENTE – ALFAJÍAS EN POLIESTIRENO EXPANDIDO | NC2025/0009562 | `/t13` |
@@ -72,11 +72,10 @@ Los QR ya impresos dependen de las rutas `/t01` … `/t24` (o `/t01.html` … `/
 
 Se dejan tal cual en el sitio; solo se anotan aquí.
 
-- **LARINGOCEL repetido** en t02 y t05 (t05 describe un dispositivo de capacitancia).
+- **LARINGOCEL** aparecía repetido en t02 y t05; t05 se corrigió a DISPOSITIVO PARA MATERIALES DIELÉCTRICOS (capacitancia).
 - **COMPOSTERAS** aparecía repetido en t12 y t15; t15 se corrigió a PIN AND JOIN (fijación ósea).
 - **Radicado NC2019/0013907 repetido** en t17 y t18.
 - **Radicado SD2025/0089837 repetido** en t19 y t20.
-- **t19 (NIAFLEZ)** tiene la descripción de MEDIDOR INTELIGENTE.
 - **t03 (SOPORTE CON ESTRIBO)** no tiene inventor, sector ni contacto propios.
 
 ## Diseño y mantenimiento
