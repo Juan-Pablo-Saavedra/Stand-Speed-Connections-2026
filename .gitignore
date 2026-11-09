@@ -2,3 +2,7 @@
 Thumbs.db
 .vercel
 node_modules
+
+# Material fuente (Word con el contenido; no se versiona)
+fuente/
+*.docx

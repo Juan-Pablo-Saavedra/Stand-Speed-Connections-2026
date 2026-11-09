@@ -28,16 +28,11 @@
     if (count) count.textContent = i + 1 + " / " + items.length;
   }
 
-  var ticking = false;
   track.addEventListener(
     "scroll",
     function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        ticking = false;
-        mark(Math.round(track.scrollLeft / track.clientWidth));
-      });
+      var i = Math.round(track.scrollLeft / track.clientWidth);
+      if (i !== current) mark(i);
     },
     { passive: true }
   );

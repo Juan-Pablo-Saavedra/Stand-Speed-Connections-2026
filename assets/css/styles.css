@@ -76,7 +76,7 @@
   --maxw: 1200px;
   --gutter-l: max(var(--sp-4), env(safe-area-inset-left, 0px));
   --gutter-r: max(var(--sp-4), env(safe-area-inset-right, 0px));
-  --bar-h: 76px;
+  --bar-h: 80px;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -416,14 +416,49 @@ button {
   background: #dcbb70;
 }
 
-/* ---------- 8. Galería ---------- */
+/* ---------- 8. Galería ----------
+   Estructura: franja superior (contador + «Ampliar») · marco de proporción fija
+   con la foto centrada · puntos debajo del marco. Ningún control tapa la foto. */
 .gallery {
-  position: relative;
+  --sheet: var(--sp-5); /* tramo que cubre la hoja de información en móvil */
   min-width: 0;
+  padding-bottom: var(--sheet);
   background: var(--navy);
 }
 
+.gallery__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 0 var(--gutter-r) 0 var(--gutter-l);
+  color: #fff;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gallery__count,
+.gallery__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.gallery__hint {
+  margin-left: auto;
+}
+
+.gallery__frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
 .gallery__track {
+  position: absolute;
+  inset: 0;
   display: flex;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -439,12 +474,12 @@ button {
 .gallery__item {
   position: relative;
   flex: 0 0 100%;
-  aspect-ratio: 5 / 4;
+  height: 100%;
   margin: 0;
   overflow: hidden;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  background: linear-gradient(100deg, #12384b 30%, #1d4d64 50%, #12384b 70%) 0 0 / 200% 100%;
+  background: linear-gradient(100deg, #0d3446 30%, #17475d 50%, #0d3446 70%) 0 0 / 200% 100%;
   animation: shimmer 1.4s linear infinite;
 }
 
@@ -459,68 +494,47 @@ button {
   cursor: zoom-in;
 }
 
+/* Fondo: la misma foto desenfocada + capa azul petróleo al 70 % (tono único en todas las tarjetas) */
 .gallery__bg {
   position: absolute;
-  inset: -10%;
-  width: 120%;
-  height: 120%;
+  z-index: 0;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
   max-width: none;
   object-fit: cover;
-  filter: blur(26px) brightness(0.55) saturate(1.15);
+  filter: blur(22px) saturate(0.8);
 }
 
+.gallery__open::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(3, 41, 58, 0.7);
+}
+
+/* Foto: centrada en el marco, mismo margen arriba y abajo */
 .gallery__img {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: block;
   width: 100%;
   height: 100%;
-  padding: 3% 3% calc(3% + var(--sp-5) + 28px);
+  padding: var(--sp-4);
   object-fit: contain;
+  object-position: center;
   transition: transform 0.5s var(--ease);
 }
 
 .gallery__open:hover .gallery__img {
-  transform: scale(1.03);
-}
-
-.gallery__hint,
-.gallery__count {
-  position: absolute;
-  z-index: 2;
-  top: var(--sp-3);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-1);
-  padding: 4px var(--sp-3);
-  border-radius: var(--r-pill);
-  background: rgba(3, 41, 58, 0.82);
-  color: #fff;
-  font-size: var(--fs-label);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  pointer-events: none;
-}
-
-.gallery__hint {
-  right: var(--sp-3);
-}
-
-.gallery__count {
-  left: var(--sp-3);
+  transform: scale(1.02);
 }
 
 .gallery__dots {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  bottom: calc(var(--sp-5) + var(--sp-2));
   display: flex;
+  justify-content: center;
   gap: 2px;
-  padding: 0 var(--sp-1);
-  border-radius: var(--r-pill);
-  background: rgba(3, 41, 58, 0.7);
-  transform: translateX(-50%);
 }
 
 .gallery__dot {
@@ -539,7 +553,7 @@ button {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.6);
   transition: width 0.25s var(--ease), background-color 0.25s;
 }
 
@@ -549,9 +563,10 @@ button {
   background: var(--gold);
 }
 
+/* Flechas: a los lados, sobre el fondo (la foto deja 72 px libres a cada lado). Solo ≥ 640 px */
 .gallery__arrow {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 50%;
   display: none;
   width: var(--tap);
@@ -560,7 +575,7 @@ button {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: rgba(3, 41, 58, 0.82);
+  background: rgba(255, 255, 255, 0.16);
   color: #fff;
   cursor: pointer;
   transform: translateY(-50%);
@@ -568,7 +583,7 @@ button {
 }
 
 .gallery__arrow:hover {
-  background: var(--navy);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .gallery__arrow--prev {
@@ -999,7 +1014,7 @@ h1 {
 /* ---------- 11. Índice ---------- */
 .hero {
   position: relative;
-  margin: calc(var(--sp-5) * -1) 0 var(--sp-5);
+  margin: var(--sp-5) 0;
   padding: var(--sp-5) var(--sp-4) var(--sp-4);
   border-radius: var(--r-lg);
   background: var(--surface);
@@ -1163,32 +1178,44 @@ h1 {
   display: block;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: linear-gradient(100deg, #dbe6ec 30%, #edf3f6 50%, #dbe6ec 70%) 0 0 / 200% 100%;
+  background: linear-gradient(100deg, #0d3446 30%, #17475d 50%, #0d3446 70%) 0 0 / 200% 100%;
   animation: shimmer 1.4s linear infinite;
 }
 
+/* Mismo tratamiento que la galería: foto desenfocada + capa azul petróleo al 70 % (tono único) */
 .tile__bg {
   position: absolute;
-  inset: -10%;
-  width: 120%;
-  height: 120%;
+  z-index: 0;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
   max-width: none;
   object-fit: cover;
-  filter: blur(18px) brightness(0.62) saturate(1.1);
+  filter: blur(18px) saturate(0.8);
+}
+
+.tile__media::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(3, 41, 58, 0.7);
 }
 
 .tile__img {
   position: relative;
+  z-index: 2;
   display: block;
   width: 100%;
   height: 100%;
-  padding: 4%;
+  padding: var(--sp-3);
   object-fit: contain;
+  object-position: center;
   transition: transform 0.5s var(--ease);
 }
 
 .tile:hover .tile__img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .tile__body {
@@ -1287,7 +1314,7 @@ h1 {
 
 /* Reserva espacio para la barra fija en tarjetas con acciones */
 .has-actions .site-footer {
-  margin-bottom: var(--bar-h);
+  margin-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom, 0px));
 }
 
 /* ---------- 13. Página 404 ---------- */
@@ -1382,12 +1409,12 @@ h1 {
     grid-column: 1 / -1;
   }
 
-  .gallery__item {
-    aspect-ratio: 16 / 10;
-  }
-
   .gallery__arrow {
     display: grid;
+  }
+
+  .gallery--multi .gallery__img {
+    padding-inline: 72px;
   }
 
   .actions {
@@ -1473,37 +1500,33 @@ h1 {
     padding-inline: var(--gutter-l) var(--gutter-r);
   }
 
+  /* Ambas columnas arrancan a la misma altura (sin márgenes negativos) y debajo del encabezado */
   .detail {
     grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
     gap: var(--sp-6);
     align-items: start;
-    margin-top: calc(var(--sp-6) * -1);
+    margin-top: var(--sp-6);
     padding-bottom: var(--sp-6);
   }
 
   .gallery {
+    --sheet: var(--sp-2);
     position: sticky;
     top: var(--sp-5);
+    align-self: start;
     overflow: hidden;
     border-radius: var(--r-lg);
     box-shadow: var(--shadow-2);
   }
 
-  .gallery__item {
-    aspect-ratio: 1 / 1;
-    max-height: 78vh;
-  }
-
-  .gallery__img {
-    padding: 3% 3% calc(3% + 32px);
-  }
-
-  .gallery__dots {
-    bottom: var(--sp-3);
+  .gallery__frame {
+    aspect-ratio: 4 / 5;
+    max-height: calc(100vh - 200px);
+    min-height: 420px;
   }
 
   .detail__info {
-    margin-top: var(--sp-6);
+    margin-top: 0;
     padding: var(--sp-7) var(--sp-6);
     border-radius: var(--r-lg);
     box-shadow: var(--shadow-1);
@@ -1546,7 +1569,7 @@ h1 {
   .gallery__arrow,
   .gallery__dots,
   .gallery__hint,
-  .gallery__count,
+  .gallery__bar,
   .gallery__bg,
   .header-cch,
   .site-footer a {
@@ -1584,15 +1607,27 @@ h1 {
     box-shadow: none;
   }
 
+  .gallery__frame {
+    aspect-ratio: auto;
+    max-height: none;
+    min-height: 0;
+    overflow: visible;
+  }
+
   .gallery__track {
+    position: static;
     display: block;
     overflow: visible;
+  }
+
+  .gallery__open::before {
+    display: none;
   }
 
   .gallery__item {
     display: inline-block;
     width: 48%;
-    aspect-ratio: auto;
+    height: auto;
     background: none;
     animation: none;
     vertical-align: top;

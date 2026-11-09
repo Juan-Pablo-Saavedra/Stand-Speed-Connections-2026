@@ -78,8 +78,6 @@ Se dejan tal cual en el sitio; solo se anotan aquí.
 - **Radicado SD2025/0089837 repetido** en t19 y t20.
 - **t19 (NIAFLEZ)** tiene la descripción de MEDIDOR INTELIGENTE.
 - **t03 (SOPORTE CON ESTRIBO)** no tiene inventor, sector ni contacto propios.
-- **t18 (DE DÁTIL ENERGY):** el Word definitivo trae una segunda frase en la descripción («IMAGINA PERSONAS ACTIVAS Y FELICES DISFRUTANDO AL MÁXIMO DE LA VIDA, COMO TÚ LO HARÁS CON DATIL ENERGY.») que el sitio no muestra. Pendiente de confirmar; no se aplicó.
-- **t03 y t04** comparten el par de fotos que el Word coloca antes de t03.
 
 ## Diseño y mantenimiento
 
