@@ -76,7 +76,6 @@ Se dejan tal cual en el sitio; solo se anotan aquí.
 - **COMPOSTERAS** aparecía repetido en t12 y t15; t15 se corrigió a PIN AND JOIN (fijación ósea).
 - **Radicado NC2019/0013907 repetido** en t17 y t18.
 - **Radicado SD2025/0089837 repetido** en t19 y t20.
-- **t03 (SOPORTE CON ESTRIBO)** no tiene inventor, sector ni contacto propios.
 
 ## Diseño y mantenimiento
 
