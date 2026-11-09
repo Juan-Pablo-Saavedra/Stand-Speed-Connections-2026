@@ -6,12 +6,18 @@ Sitio estático (HTML/CSS puro, sin build) con las tarjetas de innovaciones, pat
 
 ```text
 .
-├── index.html      # Listado de todas las innovaciones
-├── t01.html …      # 22 tarjetas (t01.html a t22.html), una por QR
-├── estilo.css      # Estilos compartidos
-├── img/            # banner.jpg, logo-cch.png, logo-innovacion.png y tNN_*.jpg
-├── vercel.json     # cleanUrls: true, trailingSlash: false
-└── .gitignore
+├── index.html          # Listado con buscador y filtro (patentes/marcas)
+├── t01.html …          # 22 tarjetas (t01.html a t22.html), una por QR
+├── 404.html            # Página de error con estilo
+├── vercel.json         # cleanUrls: true, trailingSlash: false
+├── .gitignore
+└── assets/
+    ├── css/styles.css  # Única hoja de estilos (variables, responsive, impresión)
+    ├── js/index.js     # Buscador/filtro del índice (mejora progresiva)
+    └── img/
+        ├── marca/      # banner, logos y favicon.svg
+        ├── tarjetas/   # Fotos originales tNN_k.jpg
+        └── thumbs/     # Miniaturas (144 px) usadas por el índice
 ```
 
 ## Enlaces por tarjeta
@@ -53,7 +59,7 @@ Sitio estático (HTML/CSS puro, sin build) con las tarjetas de innovaciones, pat
 
 ## ⚠️ Advertencia: no renombrar ni mover las páginas
 
-Los QR ya impresos dependen de las rutas `/t01` … `/t22`. No renombres, muevas ni borres `t01.html` … `t22.html` (ni `index.html`, `estilo.css` o el contenido de `img/`), o los QR dejarán de funcionar.
+Los QR ya impresos dependen de las rutas `/t01` … `/t22` (o `/t01.html` … `/t22.html`; ambas funcionan). No renombres, muevas ni borres `t01.html` … `t22.html` ni `index.html`, o los QR dejarán de funcionar. Los assets sí pueden reorganizarse siempre que se actualicen las referencias.
 
 ## Observaciones pendientes de confirmar con el área
 
@@ -65,3 +71,10 @@ Se dejan tal cual en el sitio; solo se anotan aquí.
 - **Radicado SD2025/0089837 repetido** en t19 y t20.
 - **t19 (NIAFLEZ)** tiene la descripción de MEDIDOR INTELIGENTE.
 - **t03 (SOPORTE CON ESTRIBO)** no tiene inventor, sector ni contacto propios.
+
+## Diseño y mantenimiento
+
+- Todo el estilo vive en `assets/css/styles.css` (variables CSS para color, espaciado, radios, sombras y tipografía). No hay estilos dentro de los HTML.
+- Móvil primero: 1 columna en móvil, 2 en tablet (≥ 640 px) y, en escritorio (≥ 960 px), foto a la izquierda e información a la derecha. Fotos con `object-fit: contain`, botones de mínimo 48 px y safe-area para iPhone.
+- Cada tarjeta incluye metadatos para compartir (Open Graph con URL absoluta de `https://speed-alpha-two.vercel.app`), favicon, `theme-color`, enlace «Saltar al contenido» y estilos de impresión.
+- Si cambia el dominio, actualiza las URLs `og:url` y `og:image` de cada página.
