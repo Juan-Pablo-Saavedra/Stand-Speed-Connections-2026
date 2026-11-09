@@ -1,0 +1,15 @@
+{
+  "name": "Speed Connections 2026 · Innovaciones",
+  "short_name": "Innovaciones",
+  "description": "Innovaciones, patentes y marcas del stand de Innovación y Propiedad Industrial de la Cámara de Comercio del Huila.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "lang": "es",
+  "background_color": "#03293a",
+  "theme_color": "#03293a",
+  "icons": [
+    { "src": "assets/img/marca/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/marca/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
